@@ -60,7 +60,6 @@ class SaleOrder(models.Model):
              ' and needs to be canceled.',
     )
 
-    @api.one
     @api.depends()
     def _compute_parent_id(self):
         """ Need to be inherited in the connectors to implement the
@@ -68,18 +67,18 @@ class SaleOrder(models.Model):
 
         See an implementation example in ``connector_magento``.
         """
+        self.ensure_one()
         self.parent_id = False
 
-    @api.one
     @api.depends('canceled_in_backend', 'cancellation_resolved')
     def _compute_need_cancel(self):
         """ Return True if the sales order need to be canceled
         (has been canceled on the Backend)
         """
+        self.ensure_one()
         self.need_cancel = (self.canceled_in_backend and
                             not self.cancellation_resolved)
 
-    @api.one
     @api.depends('need_cancel', 'parent_id',
                  'parent_id.need_cancel', 'parent_id.parent_need_cancel')
     def _compute_parent_need_cancel(self):
@@ -87,6 +86,7 @@ class SaleOrder(models.Model):
         be canceled (has been canceled on the backend).
         Follows all the parent sales orders.
         """
+        self.ensure_one()
         self.parent_need_cancel = False
         order = self.parent_id
         while order:
@@ -94,7 +94,6 @@ class SaleOrder(models.Model):
                 self.parent_need_cancel = True
             order = order.parent_id
 
-    @api.multi
     def _try_auto_cancel(self):
         """ Try to automatically cancel a sales order canceled
         in a backend.
@@ -126,7 +125,6 @@ class SaleOrder(models.Model):
                                 "canceled.")
             order.message_post(body=message)
 
-    @api.multi
     def _log_canceled_in_backend(self):
         message = _("The sales order has been canceled on the backend.")
         self.message_post(body=message)
@@ -146,7 +144,6 @@ class SaleOrder(models.Model):
             order._try_auto_cancel()
         return order
 
-    @api.multi
     def write(self, values):
         result = super(SaleOrder, self).write(values)
         if values.get('canceled_in_backend'):
@@ -154,17 +151,15 @@ class SaleOrder(models.Model):
             self._try_auto_cancel()
         return result
 
-    @api.multi
     def action_cancel(self):
         res = super(SaleOrder, self).action_cancel()
         for sale in self:
             # the sales order is canceled => considered as resolved
             if (sale.canceled_in_backend and
-                    not sale.cancellation_resolved):
-                sale.write({'cancellation_resolved': True})
+                not sale.cancellation_resolved):
+                sale.write({'cancellation_resolved':True})
         return res
 
-    @api.multi
     def ignore_cancellation(self, reason):
         """ Manually set the cancellation from the backend as resolved.
 
@@ -175,10 +170,9 @@ class SaleOrder(models.Model):
                      "backend, it should stay open.<br/><br/>Reason: %s") %
                    reason)
         self.message_post(body=message)
-        self.write({'cancellation_resolved': True})
+        self.write({'cancellation_resolved':True})
         return True
 
-    @api.multi
     def action_view_parent(self):
         """ Return an action to display the parent sales order """
         self.ensure_one()
@@ -201,7 +195,7 @@ class SaleOrder(models.Model):
         return action
 
     def _create_delivery_line(self, carrier, price_unit):
-        if self.order_line.filtered(lambda r: r.is_delivery):
+        if self.order_line.filtered(lambda r:r.is_delivery):
             # skip if we have already a delivery line (created by
             # import of order)
             return

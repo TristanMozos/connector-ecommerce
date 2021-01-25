@@ -10,11 +10,12 @@ class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
     # TODO implement set function and also support multi tax
-    @api.one
     @api.depends('taxes_id.tax_group_id')
     def _compute_tax_group_id(self):
+        self.ensure_one()
         taxes = self.taxes_id
         self.tax_group_id = taxes[:-1].tax_group_id.id
+
     tax_group_id = fields.Many2one(
         comodel_name='account.tax.group',
         compute='_compute_tax_group_id',
@@ -27,7 +28,6 @@ class ProductTemplate(models.Model):
     def _price_changed_fields(self):
         return {'list_price', 'lst_price', 'standard_price'}
 
-    @api.multi
     def _price_changed(self, vals):
         """ Fire the ``on_product_price_changed`` on all the variants of
         the template if the price of the product could have changed.
@@ -53,7 +53,6 @@ class ProductTemplate(models.Model):
             for product in products:
                 self._event('on_product_price_changed').notify(product)
 
-    @api.multi
     def write(self, vals):
         result = super(ProductTemplate, self).write(vals)
         self._price_changed(vals)
@@ -83,7 +82,6 @@ class ProductProduct(models.Model):
     def _price_changed_fields(self):
         return {'lst_price', 'standard_price', 'price', 'price_extra'}
 
-    @api.multi
     def _price_changed(self, vals):
         """ Fire the ``on_product_price_changed`` if the price
         of the product could have changed.
@@ -99,7 +97,6 @@ class ProductProduct(models.Model):
             for product in self:
                 self._event('on_product_price_changed').notify(product)
 
-    @api.multi
     def write(self, vals):
         self_context = self.with_context(from_product_ids=self.ids)
         result = super(ProductProduct, self_context).write(vals)

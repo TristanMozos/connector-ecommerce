@@ -11,11 +11,10 @@ class SaleIgnoreCancel(models.TransientModel):
 
     reason = fields.Html(required=True)
 
-    @api.multi
     def confirm_ignore_cancel(self):
         self.ensure_one()
         sale_ids = self.env.context.get('active_ids')
         assert sale_ids
         sales = self.env['sale.order'].browse(sale_ids)
         sales.ignore_cancellation(self.reason)
-        return {'type': 'ir.actions.act_window_close'}
+        return {'type':'ir.actions.act_window_close'}
