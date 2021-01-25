@@ -22,7 +22,6 @@
      'wizard/sale_ignore_cancel_view.xml',
      'data/ecommerce_data.xml',
      'views/sale_view.xml',
-     'views/invoice_view.xml',
      'views/stock_view.xml',
      'views/payment_mode_view.xml',
  ],
