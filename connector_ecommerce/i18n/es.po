@@ -245,6 +245,7 @@ msgstr "Orden Padre"
 #. module: connector_ecommerce
 #: model:exception.rule,name:connector_ecommerce.excep_parent_order_need_cancel
 #, fuzzy
+#| msgid "Sales order canceled on the backend."
 msgid "Parent sales order canceled on the backend."
 msgstr "Pedido de venta cancelado en el área de administración."
 

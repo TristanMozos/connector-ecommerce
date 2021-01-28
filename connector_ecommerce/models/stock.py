@@ -2,7 +2,7 @@
 # © 2013-2015 Camptocamp
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
 
-from odoo import models, fields, api
+from odoo import models, fields
 
 
 class StockPicking(models.Model):
@@ -40,13 +40,13 @@ class StockPicking(models.Model):
 class StockMove(models.Model):
     _inherit = 'stock.move'
 
-    def action_done(self):
+    def action_done(self, cancel_backorder=False):
         fire_event = not self.env.context.get('__no_on_event_out_done')
         if fire_event:
             pickings = self.mapped('picking_id')
             states = {p.id:p.state for p in pickings}
 
-        result = super(StockMove, self).action_done()
+        result = super()._action_done(cancel_backorder=cancel_backorder)
 
         if fire_event:
             for picking in pickings:
