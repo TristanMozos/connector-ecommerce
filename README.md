@@ -1,36 +1,21 @@
-[![Runbot Status](https://runbot.odoo-community.org/runbot/badge/flat/105/14.0.svg)](https://runbot.odoo-community.org/runbot/repo/github-com-oca-connector-ecommerce-105)
-[![Build Status](https://travis-ci.com/OCA/connector-ecommerce.svg?branch=14.0)](https://travis-ci.com/OCA/connector-ecommerce)
-[![codecov](https://codecov.io/gh/OCA/connector-ecommerce/branch/14.0/graph/badge.svg)](https://codecov.io/gh/OCA/connector-ecommerce)
-[![Translation Status](https://translation.odoo-community.org/widgets/connector-ecommerce-14-0/-/svg-badge.svg)](https://translation.odoo-community.org/engage/connector-ecommerce-14-0/?utm_source=widget)
+[![Build Status](https://travis-ci.org/OCA/connector-ecommerce.svg?branch=12.0)](https://travis-ci.org/OCA/connector-ecommerce)
+[![Coverage Status](https://coveralls.io/repos/OCA/connector-ecommerce/badge.png?branch=12.0)](https://coveralls.io/github/OCA/connector-ecommerce?branch=12.0)
 
-<!-- /!\ do not modify above this line -->
+Odoo Connector Ecommerce Modules
+================================
 
-# connector-ecommerce
+*Odoo Connector is a powerful framework to develop any kind of bi-directional connector between Odoo (Open Source ERP formerly OpenERP) and any other software or service.*
 
-TODO: add repo description.
+This Odoo add-on has a modular and generic core, with the ability to be extended with additional modules for new features or customizations.
 
-<!-- /!\ do not modify below this line -->
+This project contains modules extending the connector for projects dealing with E-Commerce.
 
-<!-- prettier-ignore-start -->
+Feel free to subscribe on the mailing list (its name is 'Connectors'):
+https://odoo-community.org/groups
 
-[//]: # (addons)
+The project for the **Connector** framework is: https://github.com/OCA/connector
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Documentation:
+http://www.odoo-connector.com
 
-[//]: # (end addons)
 
-<!-- prettier-ignore-end -->
-
-## Licenses
-
-This repository is licensed under [AGPL-3.0](LICENSE).
-
-However, each module can have a totally different license, as long as they adhere to OCA
-policy. Consult each module's `__manifest__.py` file, which contains a `license` key
-that explains its license.
-
-----
-
-OCA, or the [Odoo Community Association](http://odoo-community.org/), is a nonprofit
-organization whose mission is to support the collaborative development of Odoo features
-and promote its widespread use.
