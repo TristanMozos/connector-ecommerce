@@ -46,22 +46,6 @@ msgid "A parent sales order needs cancel"
 msgstr "Eine übergeordnete"
 
 #. module: connector_ecommerce
-#: model:exception.rule,description:connector_ecommerce.excep_product_has_checkpoint
-#, fuzzy
-msgid ""
-"A product has been imported from a backend and needs to be reviewed. Go to "
-"Connectors > Checkpoint and review the new products."
-msgstr ""
-"Ein Produkt wurde aus einem Backend importiert und benötigt eine "
-"überprüfung.\n"
-"Gehen Sie zu Connectors->Checkpunkte und überprüfen Sie das neue Produkt."
-
-#. module: connector_ecommerce
-#: model:exception.rule,name:connector_ecommerce.excep_product_has_checkpoint
-msgid "A product needs to be reviewed."
-msgstr "Ein Produkt muss überprüft werden"
-
-#. module: connector_ecommerce
 #: model:ir.model.fields,help:connector_ecommerce.field_account_payment_mode__days_before_cancel
 msgid ""
 "After 'n' days, if the 'Import Rule' is not fulfilled, the import of the "
@@ -148,11 +132,6 @@ msgstr ""
 #: model:product.template,name:connector_ecommerce.product_product_gift_product_template
 msgid "Gift Certificate"
 msgstr "Geschenkzertifikat"
-
-#. module: connector_ecommerce
-#: model:ir.model.fields,field_description:connector_ecommerce.field_product_product__has_checkpoint
-msgid "Has Checkpoint"
-msgstr "Hat Überprüfungspunkt"
 
 #. module: connector_ecommerce
 #: model:ir.model.fields,help:connector_ecommerce.field_sale_order__need_cancel

@@ -48,21 +48,6 @@ msgid "A parent sales order needs cancel"
 msgstr "Een bovenliggende verkooporder dient te worden geannuleerd"
 
 #. module: connector_ecommerce
-#: model:exception.rule,description:connector_ecommerce.excep_product_has_checkpoint
-#, fuzzy
-msgid ""
-"A product has been imported from a backend and needs to be reviewed. Go to "
-"Connectors > Checkpoint and review the new products."
-msgstr ""
-"Een product is geïmporteerd vanuit de backend en moet worden gecontroleerd.\n"
-"Ga naar Connectors > Controlepunt en controleer de nieuwe producten."
-
-#. module: connector_ecommerce
-#: model:exception.rule,name:connector_ecommerce.excep_product_has_checkpoint
-msgid "A product needs to be reviewed."
-msgstr "Een product dient te worden gecontroleerd"
-
-#. module: connector_ecommerce
 #: model:ir.model.fields,help:connector_ecommerce.field_account_payment_mode__days_before_cancel
 msgid ""
 "After 'n' days, if the 'Import Rule' is not fulfilled, the import of the "

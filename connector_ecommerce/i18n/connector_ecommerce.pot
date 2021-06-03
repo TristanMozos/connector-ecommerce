@@ -35,16 +35,6 @@ msgid "A parent sales order needs cancel"
 msgstr ""
 
 #. module: connector_ecommerce
-#: model:exception.rule,description:connector_ecommerce.excep_product_has_checkpoint
-msgid "A product has been imported from a backend and needs to be reviewed. Go to Connectors > Checkpoint and review the new products."
-msgstr ""
-
-#. module: connector_ecommerce
-#: model:exception.rule,name:connector_ecommerce.excep_product_has_checkpoint
-msgid "A product needs to be reviewed."
-msgstr ""
-
-#. module: connector_ecommerce
 #: model:ir.model.fields,help:connector_ecommerce.field_account_payment_mode__days_before_cancel
 msgid "After 'n' days, if the 'Import Rule' is not fulfilled, the import of the sales order will be canceled."
 msgstr ""
@@ -123,11 +113,6 @@ msgstr ""
 #: model:product.product,name:connector_ecommerce.product_product_gift
 #: model:product.template,name:connector_ecommerce.product_product_gift_product_template
 msgid "Gift Certificate"
-msgstr ""
-
-#. module: connector_ecommerce
-#: model:ir.model.fields,field_description:connector_ecommerce.field_product_product__has_checkpoint
-msgid "Has Checkpoint"
 msgstr ""
 
 #. module: connector_ecommerce
